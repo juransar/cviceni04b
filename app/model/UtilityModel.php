@@ -43,12 +43,12 @@ class UtilityModel extends BaseModel
         // kontrola 10 čísel
         if (strlen($pid) != 10) return false;
         // kontrola dělitelnosti 11 s kontrolním posledním číslem
-        $checknum = fmod($pid, 11);
+        $checknum = fmod(substr($pid,0,9),11);
         // vyjímka při 10
         if ($checknum == 10) $checknum = 0;
         $num = substr($pid,-1);
         if((int)$checknum != (int)$num) return false;
-
+        //955419017
         return true;
     }
 
@@ -63,7 +63,6 @@ class UtilityModel extends BaseModel
         if(!$pid) return -1;
 
         if(!$this->isCorrectPid($pid['name'])) return -1;
-
         // vyjmutí datumu
         $r = substr($pid['name'],0,2);
         // podmínka pro určení století

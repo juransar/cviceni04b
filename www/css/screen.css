@@ -1,12 +1,12 @@
 input {
-    width: 50%;
-    margin: 5px;
+    width: 90%;
+    //margin: 10px;
+    margin:10px;
 }
 
 input[type=text] {
-    width: 50%;
+    //width: 50%;
     padding: 12px 20px;
-    margin: 8px 0;
     box-sizing: border-box;
     border: 2px solid #0066BB;
     border-radius: 4px;
@@ -15,17 +15,18 @@ input[type=text]:focus {
     border: 2px solid #1A7E1E;
 }
 select {
-    width: 40%;
+    //width: 40%;
     padding: 16px 20px;
     border: 2px solid #0066BB;
     border-radius: 4px;
     //background-color: #f1f1f1;
+    margin: 10px;
+
 }
 input[type=number]{
-    width: 40%;
+    //width: 40%;
     padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
+    //margin: 8px 0;
     border: 2px solid #0066BB;
     border-radius: 4px;
 }
@@ -34,4 +35,29 @@ input[type=submit]{
     margin-top:50px;
     height: 60px;
     width: 20%;
+}
+input[type=checkbox]{
+   // position: relative;
+    float:right;
+    //width: 50%;
+}
+/*dl {
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+    margin: 0
+}
+dt { float: left; width: 100px; }
+dd { margin-left: 120px; }*/
+td,dd,th,tr,table,label {
+    width: 100%;
+}
+th {
+    width:100%;
+    display:block;
+    overflow: hidden;
+}
+td {
+    display: block;
+
 }
