@@ -1,0 +1,42 @@
+{block #content}
+
+<h1>Rodná čísla</h1>
+
+<hr>
+<ul class="nav nav-pills">
+    <li role="presentation"><a href="{plink Employer:default}">Zaměstnanci</a></li>
+    <li role="presentation" class="active"><a href="#">Rodná čísla</a></li>
+    <li role="presentation"><a href="{plink Company:default}">Firmy</a></li>
+    <li role="presentation"><a href="{plink Statistic:default}">Statistiky</a></li>
+    <li role="presentation"><a href="{plink Homepage:default}">Menu</a></li>
+</ul>
+
+<div style="text-align: right">
+    <a class="btn btn-success" href="{plink add}">Vytvoř</a>
+</div>
+
+<div class="row div-table">
+    <div class="col-xs-12 div-head">
+        <div class="row">
+            <div class="col-xs-6">Rodné číslo</div>
+            <div class="col-xs-6">Akce</div>
+        </div>
+    </div>
+    {foreach $pids as $pid}
+        <div class="col-xs-12 div-body">
+            <div class="row">
+                <div class="col-xs-6">
+                    {if !($utility->isCorrectPid($pid['name']))}
+                        <strong class="red">!! {$pid['name']}</strong>
+                    {else}
+                        {$pid['name']}
+                    {/if}
+                </div>
+                <div class="col-xs-6">
+                    <a class="btn btn-warning" href="{plink edit id => $pid['id']}">Edituj</a>
+                    <a class="btn btn-danger" href="{plink delete id => $pid['id']}">Odeber</a>
+                </div>
+            </div>
+        </div>
+    {/foreach}
+</div>

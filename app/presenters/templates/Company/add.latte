@@ -1,0 +1,37 @@
+{block #content}
+<h1>Vložení Firmy</h1>
+<p>
+<a href="{plink default}">Zpět</a>
+</p>
+
+{form addForm}
+    <table>
+        <tr class="required">
+            <th>{label name /}</th>
+            <td>{input name}</td>
+            <td>{inputError name}</td>
+
+        </tr>
+        <tr class="required">
+            <th>{label phone /}</th>
+            <td>{input phone}</td>
+            <td>{inputError phone}</td>
+        </tr>
+        <tr class="required">
+            <th>{label is_dph /}</th>
+            <td>{input is_dph}</td>
+            <td>{inputError is_dph}</td>
+        </tr>
+
+        <tr>
+            <th>{label taxNum /}</th>
+            <td>{input taxNum}</td>
+            <td>{inputError taxNum}</td>
+
+        </tr>
+        <tr>
+            <th>{label send /}</th>
+            <td>{input send}</td>
+        </tr>
+    </table>
+{/form}

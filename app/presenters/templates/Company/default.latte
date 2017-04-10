@@ -1,0 +1,47 @@
+{block #content}
+
+<h1>Firmy</h1>
+<hr>
+<ul class="nav nav-pills">
+    <li role="presentation"><a href="{plink Employer:default}">Zaměstnanci</a></li>
+    <li role="presentation"><a href="{plink Pid:default}">Rodná čísla</a></li>
+    <li role="presentation" class="active"><a href="#">Firmy</a></li>
+    <li role="presentation"><a href="{plink Statistic:default}">Statistiky</a></li>
+    <li role="presentation"><a href="{plink Homepage:default}">Menu</a></li>
+</ul>
+
+<div style="text-align: right">
+    <a class="btn btn-success" href="{plink add}">Vytvoř</a>
+</div>
+
+<div class="row div-table">
+    <div class="col-xs-12 div-head">
+        <div class="row">
+            <div class="col-xs-2">Jméno</div>
+            <div class="col-xs-3">Registrace</div>
+            <div class="col-xs-2">Je plátce DPH?</div>
+            <div class="col-xs-2">Telefon</div>
+            <div class="col-xs-3">Akce</div>
+        </div>
+    </div>
+    {foreach $companies as $c}
+        <div class="col-xs-12 div-body">
+            <div class="row">
+                <div class="col-xs-2">{$c->name}</div>
+                <div class="col-xs-3">{$c->registered|date: 'd.m.Y - h:i:s'}</div>
+                <div class="col-xs-2">{$c->is_dph ? 'Ano' : 'Ne'}</div>
+                <div class="col-xs-2">
+                    {if !($utility->filterPhone($c->phone))}
+                        <strong class="red">!! {$c->phone}</strong>
+                    {else}
+                        {$utility->filterPhone($c->phone)}
+                    {/if}
+                </div>
+                <div class="col-xs-3">
+                    <a class="btn btn-warning" href="{plink edit id => $c->id}">Edituj</a>
+                    <a class="btn btn-danger" href="{plink delete id => $c->id}">Odeber</a>
+                </div>
+            </div>
+        </div>
+    {/foreach}
+</div>

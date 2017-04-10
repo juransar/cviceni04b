@@ -1,0 +1,35 @@
+parameters:
+
+
+application:
+	errorPresenter: Error
+	mapping:
+		*: App\*Module\Presenters\*Presenter
+
+
+session:
+	expiration: 14 days
+
+
+services:
+	router: App\RouterFactory::createRouter
+
+	companyservice:
+	    class: App\Forms\CompanyFormFactory
+	    inject: yes
+	employerservice:
+	    class: App\Forms\EmployerFormFactory
+	    inject: yes
+	pidservice:
+	    class: App\Forms\PidFormFactory
+	    inject: yes
+
+	umodel:
+	    class: App\Model\UtilityModel
+	    inject: yes
+
+
+	- App\Model\CompanyModel
+	- App\Model\EmployerModel
+	- App\Model\StatisticModel
+	- App\Model\PidModel

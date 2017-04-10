@@ -1,0 +1,81 @@
+{block #content}
+
+<h1>Zaměstnanci</h1>
+<hr>
+<ul class="nav nav-pills">
+    <li role="presentation" class="active"><a href="#">Zaměstnanci</a></li>
+    <li role="presentation"><a href="{plink Pid:default}">Rodná čísla</a></li>
+    <li role="presentation"><a href="{plink Company:default}">Firmy</a></li>
+    <li role="presentation"><a href="{plink Statistic:default}">Statistiky</a></li>
+    <li role="presentation"><a href="{plink Homepage:default}">Menu</a></li>
+</ul>
+
+<div style="text-align: right">
+    <a class="btn btn-success" href="{plink add}">Vytvoř</a>
+</div>
+
+<div class="row div-table">
+    <div class="col-xs-12 div-head">
+        <div class="row">
+            <div class="col-sm-1">Firma</div>
+            <div class="col-sm-1">Jméno</div>
+            <div class="col-sm-1">Příjmení</div>
+            <div class="col-sm-2">Rodné číslo</div>
+            <div class="col-sm-1">Pohlaví</div>
+            <div class="col-sm-2">Datum narození</div>
+            <div class="col-sm-1">Plat</div>
+            <div class="col-sm-1">Daň</div>
+            <div class="col-sm-2">Akce</div>
+        </div>
+    </div>
+    {foreach $employers as $e}
+        <div class="col-xs-12 div-body">
+            <div class="row">
+                <div class="col-sm-1">{$e->company->name}</div>
+                <div class="col-sm-1"><a href="http://www.kdejsme.cz/jmeno/{$e->firstname}">{$e->firstname}</a></div>
+                <div class="col-sm-1"><a href="http://www.kdejsme.cz/prijmeni/{$e->surname}">{$e->surname}</a></div>
+                <div class="col-sm-2">
+                    {if $e->pid_id}
+                        {if !($utility->isCorrectPid($e->pid->name))}
+                            <strong class="red">!! {$e->pid->name}</strong>
+                        {else}
+                            {$e->pid->name}
+                        {/if}
+                    {else}
+                        Není uvedeno
+                    {/if}
+                </div>
+                <div class="col-sm-1">
+                    {if $e->pid_id}
+                        {var $isMan = $utility->isMan($e->pid_id)}
+                        {if ($isMan !== -1)}
+                            {$isMan ? 'Muž' : 'Žena'}
+                        {else}
+                            <strong class="red">!!</strong>
+                        {/if}
+                    {else}
+                        Není uvedeno
+                    {/if}
+                </div>
+                <div class="col-sm-2">
+                    {if $e->pid_id}
+                        {var $getBirthDay = $utility->getBirthDay($e->pid_id)}
+                        {if ($getBirthDay) != -1}
+                            {$getBirthDay}
+                        {else}
+                            <strong class="red">!!</strong>
+                        {/if}
+                    {else}
+                        Není uvedeno
+                    {/if}
+                </div>
+                <div class="col-sm-1">{$e->salary |number:2:'.':' '}</div>
+                <div class="col-sm-1">{$e->salary * 0.22 |number:2:'.':' '}</div>
+                <div class="col-sm-2">
+                    <a class="btn btn-warning" href="{plink edit id => $e->id}">Edituj</a>
+                    <a class="btn btn-danger" href="{plink delete id => $e->id}">Odeber</a>
+                </div>
+            </div>
+        </div>
+    {/foreach}
+</div>

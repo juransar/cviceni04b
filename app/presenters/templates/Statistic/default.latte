@@ -1,0 +1,35 @@
+{block #content}
+
+<h1>Statistiky</h1>
+
+<hr>
+<ul class="nav nav-pills">
+    <li role="presentation"><a href="{plink Employer:default}">Zaměstnanci</a></li>
+    <li role="presentation"><a href="{plink Pid:default}">Rodná čísla</a></li>
+    <li role="presentation"><a href="{plink Company:default}">Firmy</a></li>
+    <li role="presentation" class="active"><a href="#">Statistiky</a></li>
+    <li role="presentation"><a href="{plink Homepage:default}">Menu</a></li>
+</ul>
+
+<div class="row div-table">
+    <div class="col-xs-12 div-head">
+        <div class="row">
+            <div class="col-xs-2">Firma</div>
+            <div class="col-xs-3">Minimální plat ve firmě</div>
+            <div class="col-xs-2">Maximální plat ve firmě</div>
+            <div class="col-xs-2">Průměrný plat ve firmě</div>
+            <div class="col-xs-3">Celkový plat ve firmě</div>
+        </div>
+    </div>
+    {foreach $statistics as $s}
+        <div class="col-xs-12 div-body">
+            <div class="row">
+                <div class="col-xs-2">{$s['name']}</div>
+                <div class="col-xs-3">{$s['min']|number:2:'.':' '}</div>
+                <div class="col-xs-2">{$s['max']|number:2:'.':' '}</div>
+                <div class="col-xs-2">{$s['avg']|number:2:'.':' '}</div>
+                <div class="col-xs-3">{$s['sum']|number:2:'.':' '}</div>
+            </div>
+        </div>
+    {/foreach}
+</div>
