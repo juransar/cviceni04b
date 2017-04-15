@@ -1,7 +1,7 @@
 input {
-    width: 90%;
+    width: 70%;
     //margin: 10px;
-    margin:10px;
+    margin:10px 0px;
 }
 
 input[type=text] {
@@ -12,7 +12,7 @@ input[type=text] {
     border-radius: 4px;
 }
 input[type=text]:focus {
-    border: 2px solid #1A7E1E;
+    border: 2px solid #b6d700;
 }
 select {
     //width: 40%;
@@ -20,7 +20,7 @@ select {
     border: 2px solid #0066BB;
     border-radius: 4px;
     //background-color: #f1f1f1;
-    margin: 10px;
+    margin:10px 0px;
 
 }
 input[type=number]{
@@ -61,3 +61,5 @@ td {
     display: block;
 
 }
+#frm-addForm-is_dph{
+    color:red;}
